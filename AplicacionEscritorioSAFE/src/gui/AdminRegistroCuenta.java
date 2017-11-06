@@ -79,7 +79,7 @@ public class AdminRegistroCuenta extends JFrame {
 	private JPasswordField txtConfirmarPass;
 	private ButtonGroup bg = new ButtonGroup();
 	public static JLabel lblNombreUsuario;
-	public static JComboBox cbxRol;
+	public static JComboBox<Rol> cbxRol;
 	public static JLabel lblRolARegistrar;
 	public static JPanel pnlEmpresa;
 	public static JPanel pnlEmpleado;
@@ -191,7 +191,7 @@ public class AdminRegistroCuenta extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				ListadoEmpresasCap empCap = new ListadoEmpresasCap();
 				empCap.setVisible(true);
-				empCap.lblNombreUsuario.setText(lblNombreUsuario.getText());
+				ListadoEmpresasCap.lblNombreUsuario.setText(lblNombreUsuario.getText());
 				dispose();
 			}
 		});
@@ -205,9 +205,9 @@ public class AdminRegistroCuenta extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				AdminMantenedorCuentas adMant = new AdminMantenedorCuentas();
 				adMant.setVisible(true);
-				adMant.lblNombreUsuario.setText(lblNombreUsuario.getText());
+				AdminMantenedorCuentas.lblNombreUsuario.setText(lblNombreUsuario.getText());
 				dispose();
-				adMant.EditarAdmin();
+				AdminMantenedorCuentas.EditarAdmin();
 			}
 		});
 		mnEditar.add(mntmAdministradores);
@@ -217,9 +217,9 @@ public class AdminRegistroCuenta extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				AdminMantenedorCuentas adMant = new AdminMantenedorCuentas();
 				adMant.setVisible(true);
-				adMant.lblNombreUsuario.setText(lblNombreUsuario.getText());
+				AdminMantenedorCuentas.lblNombreUsuario.setText(lblNombreUsuario.getText());
 				dispose();
-				adMant.EditarSupervisor();
+				AdminMantenedorCuentas.EditarSupervisor();
 			}
 		});
 		mnEditar.add(mntmSupervisores);
@@ -229,9 +229,9 @@ public class AdminRegistroCuenta extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				AdminMantenedorCuentas adMant = new AdminMantenedorCuentas();
 				adMant.setVisible(true);
-				adMant.lblNombreUsuario.setText(lblNombreUsuario.getText());
+				AdminMantenedorCuentas.lblNombreUsuario.setText(lblNombreUsuario.getText());
 				dispose();
-				adMant.EditarIngeniero();
+				AdminMantenedorCuentas.EditarIngeniero();
 			}
 		});
 		mnEditar.add(mntmIngenieros);
@@ -241,9 +241,9 @@ public class AdminRegistroCuenta extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				AdminMantenedorCuentas adMant = new AdminMantenedorCuentas();
 				adMant.setVisible(true);
-				adMant.lblNombreUsuario.setText(lblNombreUsuario.getText());
+				AdminMantenedorCuentas.lblNombreUsuario.setText(lblNombreUsuario.getText());
 				dispose();
-				adMant.EditarEmpresa();
+				AdminMantenedorCuentas.EditarEmpresa();
 			}
 		});
 		mnEditar.add(mntmEmpresas);
@@ -479,7 +479,7 @@ public class AdminRegistroCuenta extends JFrame {
 
 		lblRolARegistrar = new JLabel("Rol a registrar:");
 
-		cbxRol = new JComboBox();
+		cbxRol = new JComboBox<Rol>();
 
 		rol1 = new Rol();
 		rol1.setId_rol(1);
