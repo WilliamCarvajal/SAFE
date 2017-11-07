@@ -94,7 +94,7 @@ public class AdminMantenedorCuentas extends JFrame {
 	public JScrollPane scrollPane = new JScrollPane();
 	public int idCuenta;
 	
-	//Prueba
+	//Pruebaaaaa
 
 	public static DefaultTableModel modelo = new DefaultTableModel() {
 		public boolean isCellEditable(int fila, int columna) {
@@ -411,9 +411,9 @@ public class AdminMantenedorCuentas extends JFrame {
 					System.out.println("actualizado: " + actualizado);
 
 					if (actualizado > 0) {
-						JOptionPane.showMessageDialog(null, "Se actualizó exitosamente la empresa");
+						JOptionPane.showMessageDialog(null, "Se actualizÃ³ exitosamente la empresa");
 					} else {
-						JOptionPane.showMessageDialog(null, "No se actualizó correctamente la empresa");
+						JOptionPane.showMessageDialog(null, "No se actualizÃ³ correctamente la empresa");
 					}
 				} catch (RemoteException e1) {
 					e1.printStackTrace();
@@ -427,7 +427,7 @@ public class AdminMantenedorCuentas extends JFrame {
 					e.printStackTrace();
 				}
 				// } else {
-				// JOptionPane.showMessageDialog(null, "Contraseñas no coinciden.");
+				// JOptionPane.showMessageDialog(null, "ContraseÃ±as no coinciden.");
 				// }
 			}
 		});
@@ -463,7 +463,7 @@ public class AdminMantenedorCuentas extends JFrame {
 		rol2 = new Rol();
 		rol2.setId_rol(3);
 		rol2.setNombre_rol("Supervisor");
-		rol2.setDescripcion("Recopila y emite informes de evaluación.");
+		rol2.setDescripcion("Recopila y emite informes de evaluaciÃ³n.");
 		cbxRol.addItem(rol2);
 
 		rol3 = new Rol();
@@ -524,7 +524,7 @@ public class AdminMantenedorCuentas extends JFrame {
 					ServicioComunicacionStub proxy = new ServicioComunicacionStub();
 
 					if (cbxRol.getSelectedItem() == rol4) {
-						int opcEmpresa = JOptionPane.showConfirmDialog(null, "Se eliminará la empresa \n ¿Está seguro?",
+						int opcEmpresa = JOptionPane.showConfirmDialog(null, "Se eliminarÃ¡ la empresa \n Â¿EstÃ¡ seguro?",
 								"Confirmar", JOptionPane.YES_NO_OPTION);
 						// 0 = Si, 1 = No
 
@@ -543,7 +543,7 @@ public class AdminMantenedorCuentas extends JFrame {
 							System.out.println(eliminado);
 
 							if (eliminado > 0) {
-								JOptionPane.showMessageDialog(null, "Se eliminó de forma correcta la empresa");
+								JOptionPane.showMessageDialog(null, "Se eliminÃ³ de forma correcta la empresa");
 
 								DeleteCuentaUsuario deleteCuenta = new DeleteCuentaUsuario();
 								deleteCuenta.setIdCuentaUsuario(idUsu);
@@ -551,13 +551,13 @@ public class AdminMantenedorCuentas extends JFrame {
 
 								LlenarTabla(rol4.getId_rol());
 							} else {
-								JOptionPane.showMessageDialog(null, "No se eliminó la empresa");
+								JOptionPane.showMessageDialog(null, "No se eliminÃ³ la empresa");
 							}
 						}
 					} else {
 						/*
 						 * int opcEmpleado = JOptionPane.showConfirmDialog(null,
-						 * "Se eliminará el usuario \n ¿Está seguro?", "Confirmar",
+						 * "Se eliminarÃ¡ el usuario \n Â¿EstÃ¡ seguro?", "Confirmar",
 						 * JOptionPane.YES_NO_OPTION); // 0 = Si, 1 = No
 						 * 
 						 * if (opcEmpleado == 0) { Empleado empl = new Empleado();
@@ -573,13 +573,13 @@ public class AdminMantenedorCuentas extends JFrame {
 						 * System.out.println(eliminado);
 						 * 
 						 * if (eliminado > 0) { JOptionPane.showMessageDialog(null,
-						 * "Se eliminó de forma correcta el empleado");
+						 * "Se eliminÃ³ de forma correcta el empleado");
 						 * 
 						 * DeleteCuentaUsuario deleteCuenta = new DeleteCuentaUsuario();
 						 * deleteCuenta.setIdCuentaUsuario(idUsu);
 						 * 
 						 * LlenarTabla(rol4.getId_rol()); } else { JOptionPane.showMessageDialog(null,
-						 * "No se eliminó el empleado"); } }
+						 * "No se eliminÃ³ el empleado"); } }
 						 */
 					}
 					DeleteCuentaUsuario deleteCuenta = new DeleteCuentaUsuario();
@@ -879,7 +879,7 @@ public class AdminMantenedorCuentas extends JFrame {
 					JOptionPane.showMessageDialog(null, "Error al actualizar empresa");
 				}
 				// } else {
-				// JOptionPane.showMessageDialog(null, "Contraseñas no coinciden.");
+				// JOptionPane.showMessageDialog(null, "ContraseÃ±as no coinciden.");
 				// }
 			}
 
