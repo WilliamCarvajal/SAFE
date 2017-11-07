@@ -10,7 +10,7 @@ package service;
 
 public class ServicioComunicacionIOExceptionException extends java.lang.Exception{
 
-    private static final long serialVersionUID = 1510092267927L;
+    private static final long serialVersionUID = 1510095006942L;
     
     private service.ServicioComunicacionStub.ServicioComunicacionIOException faultMessage;
 
