@@ -99,6 +99,8 @@ public class AdminMantenedorCuentas extends JFrame {
 			return false;
 		}
 	};
+	
+	//Prueba
 
 	public static JTable tblCuentas;
 

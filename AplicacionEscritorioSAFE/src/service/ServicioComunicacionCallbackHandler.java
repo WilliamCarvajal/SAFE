@@ -205,6 +205,38 @@
             }
                 
            /**
+            * auto generated Axis2 call back method for deletePlanCapactitacion method
+            * override this method for handling normal response from deletePlanCapactitacion operation
+            */
+           public void receiveResultdeletePlanCapactitacion(
+                    service.ServicioComunicacionStub.DeletePlanCapactitacionResponse result
+                        ) {
+           }
+
+          /**
+           * auto generated Axis2 Error handler
+           * override this method for handling error response from deletePlanCapactitacion operation
+           */
+            public void receiveErrordeletePlanCapactitacion(java.lang.Exception e) {
+            }
+                
+           /**
+            * auto generated Axis2 call back method for readEmpleadoByIdUsuario method
+            * override this method for handling normal response from readEmpleadoByIdUsuario operation
+            */
+           public void receiveResultreadEmpleadoByIdUsuario(
+                    service.ServicioComunicacionStub.ReadEmpleadoByIdUsuarioResponse result
+                        ) {
+           }
+
+          /**
+           * auto generated Axis2 Error handler
+           * override this method for handling error response from readEmpleadoByIdUsuario operation
+           */
+            public void receiveErrorreadEmpleadoByIdUsuario(java.lang.Exception e) {
+            }
+                
+           /**
             * auto generated Axis2 call back method for deleteCuentaUsuario method
             * override this method for handling normal response from deleteCuentaUsuario operation
             */
@@ -250,6 +282,22 @@
            * override this method for handling error response from deleteEmpresa operation
            */
             public void receiveErrordeleteEmpresa(java.lang.Exception e) {
+            }
+                
+           /**
+            * auto generated Axis2 call back method for readPlanByIdPlan method
+            * override this method for handling normal response from readPlanByIdPlan operation
+            */
+           public void receiveResultreadPlanByIdPlan(
+                    service.ServicioComunicacionStub.ReadPlanByIdPlanResponse result
+                        ) {
+           }
+
+          /**
+           * auto generated Axis2 Error handler
+           * override this method for handling error response from readPlanByIdPlan operation
+           */
+            public void receiveErrorreadPlanByIdPlan(java.lang.Exception e) {
             }
                 
            /**
@@ -317,6 +365,22 @@
             }
                 
            /**
+            * auto generated Axis2 call back method for deleteCurso method
+            * override this method for handling normal response from deleteCurso operation
+            */
+           public void receiveResultdeleteCurso(
+                    service.ServicioComunicacionStub.DeleteCursoResponse result
+                        ) {
+           }
+
+          /**
+           * auto generated Axis2 Error handler
+           * override this method for handling error response from deleteCurso operation
+           */
+            public void receiveErrordeleteCurso(java.lang.Exception e) {
+            }
+                
+           /**
             * auto generated Axis2 call back method for readCursoByIdPlan method
             * override this method for handling normal response from readCursoByIdPlan operation
             */
@@ -346,6 +410,22 @@
            * override this method for handling error response from readVisitaMedicaByRutEmpresa operation
            */
             public void receiveErrorreadVisitaMedicaByRutEmpresa(java.lang.Exception e) {
+            }
+                
+           /**
+            * auto generated Axis2 call back method for updatePlanCapacitacion method
+            * override this method for handling normal response from updatePlanCapacitacion operation
+            */
+           public void receiveResultupdatePlanCapacitacion(
+                    service.ServicioComunicacionStub.UpdatePlanCapacitacionResponse result
+                        ) {
+           }
+
+          /**
+           * auto generated Axis2 Error handler
+           * override this method for handling error response from updatePlanCapacitacion operation
+           */
+            public void receiveErrorupdatePlanCapacitacion(java.lang.Exception e) {
             }
                 
            /**
