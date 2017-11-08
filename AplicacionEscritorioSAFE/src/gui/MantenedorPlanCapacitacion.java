@@ -49,9 +49,6 @@ public class MantenedorPlanCapacitacion extends JFrame {
 
 	private JPanel contentPane;
 	private JLabel lblTitulo;
-	private JLabel lblRutEmpresa;
-	private JTextField txtRutEmpresa;
-	private JTextField txtDvEmpresa;
 	private JLabel lblNombrePlanDe;
 	private JTextField txtNombrepPlan;
 	private JLabel lblNewLabel;
@@ -185,37 +182,46 @@ public class MantenedorPlanCapacitacion extends JFrame {
 
 		lblRutEmpr.setForeground(new Color(51, 153, 255));
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
-				.createSequentialGroup().addGap(30)
-				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
-						.createSequentialGroup()
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblRegistroDeCapacitaciones, GroupLayout.PREFERRED_SIZE, 285,
-										GroupLayout.PREFERRED_SIZE)
-								.addGroup(gl_contentPane.createSequentialGroup()
-										.addComponent(panel, GroupLayout.PREFERRED_SIZE, 333,
-												GroupLayout.PREFERRED_SIZE)
-										.addGap(36).addComponent(pnlPlanCap, GroupLayout.PREFERRED_SIZE, 244,
-												GroupLayout.PREFERRED_SIZE)))
-						.addContainerGap(45, Short.MAX_VALUE))
+		gl_contentPane.setHorizontalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(30)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
-								.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 62, GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(lblNombreUsuario, GroupLayout.PREFERRED_SIZE, 162,
-										GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.RELATED, 258, Short.MAX_VALUE)
-								.addComponent(lblRutEmpr).addGap(140)))));
-		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup().addContainerGap()
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE).addComponent(label_1)
-								.addComponent(lblNombreUsuario).addComponent(lblRutEmpr))
-						.addPreferredGap(ComponentPlacement.UNRELATED).addComponent(lblRegistroDeCapacitaciones)
-						.addGap(21)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(pnlPlanCap, GroupLayout.PREFERRED_SIZE, 287, GroupLayout.PREFERRED_SIZE)
-								.addGroup(gl_contentPane.createSequentialGroup().addGap(1).addComponent(panel,
-										GroupLayout.PREFERRED_SIZE, 375, GroupLayout.PREFERRED_SIZE)))
-						.addContainerGap(57, Short.MAX_VALUE)));
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblRegistroDeCapacitaciones, GroupLayout.PREFERRED_SIZE, 285, GroupLayout.PREFERRED_SIZE)
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addComponent(panel, GroupLayout.PREFERRED_SIZE, 333, GroupLayout.PREFERRED_SIZE)
+									.addGap(36)
+									.addComponent(pnlPlanCap, GroupLayout.PREFERRED_SIZE, 244, GroupLayout.PREFERRED_SIZE)))
+							.addContainerGap(45, Short.MAX_VALUE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 62, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(lblNombreUsuario, GroupLayout.PREFERRED_SIZE, 162, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED, 288, Short.MAX_VALUE)
+							.addComponent(lblRutEmpr)
+							.addGap(140))))
+		);
+		gl_contentPane.setVerticalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(label_1)
+						.addComponent(lblNombreUsuario)
+						.addComponent(lblRutEmpr))
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addComponent(lblRegistroDeCapacitaciones)
+							.addGap(22)
+							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 375, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(47)
+							.addComponent(pnlPlanCap, GroupLayout.PREFERRED_SIZE, 241, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap(57, Short.MAX_VALUE))
+		);
 
 		JLabel lblListadoDePlanes = new JLabel("Listado de planes de capacitaci\u00F3n");
 		lblListadoDePlanes.setFont(new Font("Tahoma", Font.BOLD, 12));
@@ -324,16 +330,6 @@ public class MantenedorPlanCapacitacion extends JFrame {
 		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitulo.setFont(new Font("Tahoma", Font.BOLD, 12));
 
-		lblRutEmpresa = new JLabel("Rut empresa");
-
-		txtRutEmpresa = new JTextField();
-		txtRutEmpresa.setColumns(10);
-
-		txtDvEmpresa = new JTextField();
-		txtDvEmpresa.setColumns(10);
-
-		JLabel label = new JLabel("-");
-
 		lblNombrePlanDe = new JLabel("Nombre plan de capacitaci\u00F3n");
 
 		txtNombrepPlan = new JTextField();
@@ -382,41 +378,48 @@ public class MantenedorPlanCapacitacion extends JFrame {
 			}
 		});
 		GroupLayout gl_pnlPlanCap = new GroupLayout(pnlPlanCap);
-		gl_pnlPlanCap.setHorizontalGroup(gl_pnlPlanCap.createParallelGroup(Alignment.TRAILING).addGroup(gl_pnlPlanCap
-				.createSequentialGroup().addGap(19)
-				.addGroup(gl_pnlPlanCap.createParallelGroup(Alignment.LEADING, false).addComponent(lblNewLabel)
-						.addComponent(lblRutEmpresa).addComponent(lblNombrePlanDe).addComponent(txtNombrepPlan)
+		gl_pnlPlanCap.setHorizontalGroup(
+			gl_pnlPlanCap.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_pnlPlanCap.createSequentialGroup()
+					.addGap(19)
+					.addGroup(gl_pnlPlanCap.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_pnlPlanCap.createSequentialGroup()
-								.addComponent(txtRutEmpresa, GroupLayout.PREFERRED_SIZE, 127,
-										GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(label, GroupLayout.PREFERRED_SIZE, 12, GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(txtDvEmpresa, GroupLayout.PREFERRED_SIZE, 52, GroupLayout.PREFERRED_SIZE))
-						.addComponent(txtAnio))
-				.addContainerGap(37, Short.MAX_VALUE))
-				.addGroup(gl_pnlPlanCap.createSequentialGroup().addContainerGap(31, Short.MAX_VALUE)
-						.addComponent(lblTitulo).addGap(25))
-				.addGroup(Alignment.LEADING,
-						gl_pnlPlanCap
-								.createSequentialGroup().addGap(38).addComponent(btnGuardarCambios,
-										GroupLayout.PREFERRED_SIZE, 162, GroupLayout.PREFERRED_SIZE)
-								.addContainerGap(44, Short.MAX_VALUE)));
-		gl_pnlPlanCap.setVerticalGroup(gl_pnlPlanCap.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_pnlPlanCap.createSequentialGroup().addContainerGap().addComponent(lblTitulo).addGap(15)
-						.addComponent(lblRutEmpresa).addPreferredGap(ComponentPlacement.RELATED)
-						.addGroup(gl_pnlPlanCap.createParallelGroup(Alignment.BASELINE)
-								.addComponent(txtRutEmpresa, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-										GroupLayout.PREFERRED_SIZE)
-								.addComponent(label).addComponent(txtDvEmpresa, GroupLayout.PREFERRED_SIZE,
-										GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-						.addGap(11).addComponent(lblNombrePlanDe).addPreferredGap(ComponentPlacement.RELATED)
-						.addComponent(txtNombrepPlan, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-								GroupLayout.PREFERRED_SIZE)
-						.addGap(11).addComponent(lblNewLabel).addPreferredGap(ComponentPlacement.RELATED)
-						.addComponent(txtAnio, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-								GroupLayout.PREFERRED_SIZE)
-						.addGap(36).addComponent(btnGuardarCambios).addContainerGap(100, Short.MAX_VALUE)));
+							.addComponent(lblNewLabel)
+							.addContainerGap())
+						.addGroup(gl_pnlPlanCap.createParallelGroup(Alignment.LEADING)
+							.addGroup(Alignment.TRAILING, gl_pnlPlanCap.createSequentialGroup()
+								.addGroup(gl_pnlPlanCap.createParallelGroup(Alignment.TRAILING)
+									.addComponent(txtNombrepPlan, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+									.addGroup(gl_pnlPlanCap.createSequentialGroup()
+										.addPreferredGap(ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+										.addComponent(lblTitulo))
+									.addComponent(txtAnio, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
+								.addGap(25))
+							.addGroup(gl_pnlPlanCap.createSequentialGroup()
+								.addComponent(lblNombrePlanDe, GroupLayout.PREFERRED_SIZE, 190, GroupLayout.PREFERRED_SIZE)
+								.addContainerGap(35, Short.MAX_VALUE)))))
+				.addGroup(gl_pnlPlanCap.createSequentialGroup()
+					.addGap(38)
+					.addComponent(btnGuardarCambios, GroupLayout.PREFERRED_SIZE, 162, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(44, Short.MAX_VALUE))
+		);
+		gl_pnlPlanCap.setVerticalGroup(
+			gl_pnlPlanCap.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_pnlPlanCap.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(lblTitulo)
+					.addGap(18)
+					.addComponent(lblNombrePlanDe)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(txtNombrepPlan, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addComponent(lblNewLabel)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(txtAnio, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGap(41)
+					.addComponent(btnGuardarCambios)
+					.addContainerGap(81, Short.MAX_VALUE))
+		);
 		pnlPlanCap.setLayout(gl_pnlPlanCap);
 		contentPane.setLayout(gl_contentPane);
 	}
