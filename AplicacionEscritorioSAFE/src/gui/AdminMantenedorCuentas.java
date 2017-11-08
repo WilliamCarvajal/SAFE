@@ -93,8 +93,6 @@ public class AdminMantenedorCuentas extends JFrame {
 	public static JLabel lblMantenedor;
 	public JScrollPane scrollPane = new JScrollPane();
 	public int idCuenta;
-	
-	//Pruebaaaaa
 
 	public static DefaultTableModel modelo = new DefaultTableModel() {
 		public boolean isCellEditable(int fila, int columna) {

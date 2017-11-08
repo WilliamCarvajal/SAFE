@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 import entidades.ModuloCapacitacion.Curso;
 import service.ServicioComunicacionIOExceptionException;
 import service.ServicioComunicacionStub;
+import service.ServicioComunicacionStub.DeleteCurso;
 import service.ServicioComunicacionStub.ReadCursoByIdCurso;
 import service.ServicioComunicacionStub.ReadCursoByIdPlan;
 import service.ServicioComunicacionStub.UpdateCurso;
@@ -261,31 +262,20 @@ public class MantenedorCapacitacion extends JFrame {
 						int row = tblCapacitaciones.getSelectedRow();
 						int idCap = (Integer) tblCapacitaciones.getValueAt(row, 0);
 						ServicioComunicacionStub proxy = new ServicioComunicacionStub();
-						ObjectMapper mapper = new ObjectMapper();
 
-						new Curso();
-						ReadCursoByIdCurso readCurso = new ReadCursoByIdCurso();
-						readCurso.setIdCurso(idCap);
-						String capJson = proxy.readCursoByIdCurso(readCurso).get_return();
-						mapper.readValue(capJson, Curso.class);
+						DeleteCurso delCurso = new DeleteCurso();
+						delCurso.setIdCurso(idCap);
 
-						/*
-						 * DeleteEmpresa delEmpresa = new DeleteEmpresa();
-						 * delEmpresa.setRutEmpresa(empr.getRut_empresa());
-						 * 
-						 * int eliminado = proxy.deleteEmpresa(delEmpresa).get_return();
-						 * System.out.println(eliminado);
-						 * 
-						 * if (eliminado > 0) { JOptionPane.showMessageDialog(null,
-						 * "Se eliminó de forma correcta la empresa");
-						 * 
-						 * DeleteCuentaUsuario deleteCuenta = new DeleteCuentaUsuario();
-						 * deleteCuenta.setIdCuentaUsuario(idUsu);
-						 * proxy.deleteCuentaUsuario(deleteCuenta);
-						 * 
-						 * LlenarTabla(rol4.getId_rol()); } else { JOptionPane.showMessageDialog(null,
-						 * "No se eliminó la empresa"); }
-						 */
+						int eliminado = proxy.deleteCurso(delCurso).get_return();
+						System.out.println(eliminado);
+
+						if (eliminado > 0) {
+							JOptionPane.showMessageDialog(null, "Se eliminó de forma correcta la capacitación");
+							LlenarTabla(idPlan);
+						} else {
+							JOptionPane.showMessageDialog(null, "No se eliminó la capacitación");
+						}
+
 					} catch (ServicioComunicacionIOExceptionException | IOException e1) {
 						e1.printStackTrace();
 					}
@@ -401,7 +391,6 @@ public class MantenedorCapacitacion extends JFrame {
 		btnGuardarCambios = new JButton("Guardar cambios");
 		btnGuardarCambios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// Falta idCurso e idCapacitacion
 				String nomCurso = txtNomCurso.getText();
 				String lugCurso = txtLugarCurso.getText();
 				int minPart = Integer.parseInt(txtCantMin.getText());
@@ -418,7 +407,6 @@ public class MantenedorCapacitacion extends JFrame {
 					cur.setId_curso(idCurso);
 					cur.setNombre_curso(nomCurso);
 					cur.setLugar_curso(lugCurso);
-					;
 					cur.setMax_participantes(maxPart);
 					cur.setMin_participantes(minPart);
 					cur.setDesc_curso(desCurso);
@@ -431,7 +419,6 @@ public class MantenedorCapacitacion extends JFrame {
 					UpdCurso.setCursoJson(updCapJson);
 
 					int actualizado = proxy.updateCurso(UpdCurso).get_return();
-					;
 
 					if (actualizado > 0) {
 						JOptionPane.showMessageDialog(null, "Se actualizó exitosamente el curso");

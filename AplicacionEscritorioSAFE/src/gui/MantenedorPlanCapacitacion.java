@@ -6,9 +6,17 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import entidades.ModuloCapacitacion.Curso;
 import entidades.ModuloCapacitacion.PlanCapacitacion;
+import service.ServicioComunicacionIOExceptionException;
 import service.ServicioComunicacionStub;
+import service.ServicioComunicacionStub.DeleteCurso;
+import service.ServicioComunicacionStub.DeletePlanCapactitacion;
+import service.ServicioComunicacionStub.ReadCursoByIdCurso;
+import service.ServicioComunicacionStub.ReadPlanByIdPlan;
 import service.ServicioComunicacionStub.ReadPlanByRutEmpresa;
+import service.ServicioComunicacionStub.UpdateCurso;
+import service.ServicioComunicacionStub.UpdatePlanCapacitacion;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -19,6 +27,8 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.awt.event.ActionEvent;
@@ -63,6 +73,8 @@ public class MantenedorPlanCapacitacion extends JFrame {
 	private JScrollPane scrollPane;
 	public static JTable tblPlanes;
 	public static JLabel lblRutEmpr = new JLabel();
+	public int idPlan;
+	public int rutEmpresa;
 
 	public static DefaultTableModel modelo = new DefaultTableModel() {
 		public boolean isCellEditable(int fila, int columna) {
@@ -147,8 +159,8 @@ public class MantenedorPlanCapacitacion extends JFrame {
 		mntmCapacitaciones.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int row = tblPlanes.getSelectedRow();
-				String idPlan = (String) tblPlanes.getValueAt(row, 0);
-				MantenedorCapacitacion.lblIdPlan.setText(idPlan);
+				String idPl = (String) tblPlanes.getValueAt(row, 0);
+				MantenedorCapacitacion.lblIdPlan.setText(idPl);
 				MantenedorCapacitacion mCap = new MantenedorCapacitacion();
 				mCap.setVisible(true);
 				dispose();
@@ -209,8 +221,61 @@ public class MantenedorPlanCapacitacion extends JFrame {
 		lblListadoDePlanes.setFont(new Font("Tahoma", Font.BOLD, 12));
 
 		btnEditarPlan = new JButton("Editar plan");
+		btnEditarPlan.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					int row = tblPlanes.getSelectedRow();
+					idPlan = (Integer) tblPlanes.getValueAt(row, 0);
+					rutEmpresa = Integer.parseInt(lblRutEmpr.getText());
+					ServicioComunicacionStub proxy = new ServicioComunicacionStub();
+					ObjectMapper mapper = new ObjectMapper();
+
+					PlanCapacitacion plan = new PlanCapacitacion();
+					ReadPlanByIdPlan readPlan = new ReadPlanByIdPlan();
+					readPlan.setIdPlan(idPlan);
+					String planJson = proxy.readPlanByIdPlan(readPlan).get_return();
+					plan = mapper.readValue(planJson, PlanCapacitacion.class);
+
+					txtNombrepPlan.setText(plan.getNombre_plan());
+					txtAnio.setText(Integer.toString(plan.getAnio()));
+				} catch (ServicioComunicacionIOExceptionException | IOException e) {
+					e.printStackTrace();
+				}			
+			}
+		});
 
 		btnEliminarPlan_1 = new JButton("Eliminar plan");
+		btnEliminarPlan_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int opcEliminar = JOptionPane.showConfirmDialog(null, "Se eliminará la capacitación \n ¿Está seguro?",
+						"Confirmar", JOptionPane.YES_NO_OPTION);
+				// 0 = Si, 1 = No
+
+				if (opcEliminar == 0) {
+
+					try {
+						int row = tblPlanes.getSelectedRow();
+						int idPl = (Integer)tblPlanes.getValueAt(row, 0);
+						ServicioComunicacionStub proxy = new ServicioComunicacionStub();
+
+						DeletePlanCapactitacion delPlan = new DeletePlanCapactitacion();
+						delPlan.setIdPlan(idPl);
+
+						int eliminado = proxy.deletePlanCapactitacion(delPlan).get_return();
+
+						if (eliminado > 0) {
+							JOptionPane.showMessageDialog(null, "Se eliminó de forma correcta el plan de capacitación");
+							LlenarTabla(Integer.parseInt(lblRutEmpr.getText()));
+						} else {
+							JOptionPane.showMessageDialog(null, "No se eliminó el plan de capacitación");
+						}
+
+					} catch (ServicioComunicacionIOExceptionException | IOException e1) {
+						e1.printStackTrace();
+					}
+				}
+			}
+		});
 
 		scrollPane = new JScrollPane();
 
@@ -282,16 +347,36 @@ public class MantenedorPlanCapacitacion extends JFrame {
 		JButton btnGuardarCambios = new JButton("Guardar cambios");
 		btnGuardarCambios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				txtNombrepPlan.getText();
+				String nomPlan = txtNombrepPlan.getText();
 				int anio = Integer.parseInt(txtAnio.getText());
 
 				try {
-					PlanCapacitacion plan = new PlanCapacitacion();
-					// plan.setNombrePlan(nomPlan);
-					plan.setAnio(anio);
+					ServicioComunicacionStub proxy = new ServicioComunicacionStub();
+					StringWriter stringUpdPlan = new StringWriter();
+					ObjectMapper objectMapper = new ObjectMapper();
 
-				} catch (Exception e) {
-					JOptionPane.showMessageDialog(null, "Error al actualizar el plan de capacitación.");
+					PlanCapacitacion plan = new PlanCapacitacion();
+					plan.setId_plan(idPlan);
+					plan.setNombre_plan(nomPlan);
+					plan.setAnio(anio);
+					plan.setRut_empresa(rutEmpresa);
+
+					objectMapper.writeValue(stringUpdPlan, plan);
+					String updPlanJson = stringUpdPlan.toString();
+					UpdatePlanCapacitacion UpdPlan = new UpdatePlanCapacitacion();
+					UpdPlan.setPlanJson(updPlanJson);
+
+					int actualizado = proxy.updatePlanCapacitacion(UpdPlan).get_return();
+
+					if (actualizado > 0) {
+						JOptionPane.showMessageDialog(null, "Se actualizó exitosamente el plan de capacitación");
+						LlenarTabla(idPlan);
+					} else {
+						JOptionPane.showMessageDialog(null, "No se actualizó correctamente el plan de capacitación...");
+					}
+
+				} catch (Exception e1) {
+					JOptionPane.showMessageDialog(null, "Error al editar el plan de capacitación");
 				}
 
 			}
