@@ -100,7 +100,7 @@ public class RedactarEvaluacionPersonas extends JFrame {
 				Document document = new Document();
 
 				try {
-					PdfWriter.getInstance(document, new FileOutputStream("results/InformePersona.pdf"));
+					PdfWriter.getInstance(document, new FileOutputStream("Informes/Evaluaciones Trabajadores/Informe "+txtNomTrabajador.getText()+".pdf"));
 
 					document.open();
 					Paragraph paragraph1 = new Paragraph();

@@ -109,7 +109,7 @@ public class GenerarInforme extends JFrame {
 
 				try {
 					// Se define una ruta para el archivo
-					PdfWriter.getInstance(document, new FileOutputStream("results/InformeCapacitación.pdf"));
+					PdfWriter.getInstance(document, new FileOutputStream("Informes/Certificados/Certificado"+txtAlumno.getText()+".pdf"));
 					// Se abre el documento para empezar a cargarle información
 					document.open();
 					// Los párrafos serán nuestra principal fuente de información

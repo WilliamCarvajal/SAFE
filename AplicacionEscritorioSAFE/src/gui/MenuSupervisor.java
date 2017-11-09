@@ -124,7 +124,7 @@ public class MenuSupervisor extends JFrame {
 
 		JMenuItem mntmEnviarMailA = new JMenuItem("Enviar mail a m\u00E9dico");
 		mnVisitasMdicas.add(mntmEnviarMailA);
-		mntmAdministrarVisitas.addActionListener(new ActionListener() {
+		mntmEnviarMailA.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
